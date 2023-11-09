@@ -24,7 +24,7 @@
 #       - SAP Kernel Version
 #       - SAP Unicode Status
 #       - SAP OS Type (e.g. linuxx86_64)
-#       - SAP DB Type (e.g. hdb, syb)
+#       - SAP DB Type
 #	Input:
 #		- params (all | nw | <SID> )
 #	Output:
@@ -58,19 +58,6 @@
 #   get_sap_kernel_os_type
 #   get_sap_unicode_status
 #   get_sap_kernel_db_type
-
-#   =====================================================================
-#	Change Log
-#   =====================================================================
-#   08.11.2023 - First Release - Ronny Fiebig
-#       - Added new Functions
-#           - get_sap_kernel_release
-#           - get_sap_kernel_version
-#           - get_sap_kernel_os_type
-#           - get_sap_unicode_status
-#           - get_sap_kernel_db_type
-#       - Fixed issue #20 from original Script
-
 
 # Loops through /hana/shared for all SIDs and exports results to global array HANA_SID_ARRAY
 function get_all_hana_sid(){
@@ -467,15 +454,15 @@ function arrays_to_dictionary() {
 		echo -n ', '
 		echo -n \"Type\": \"${DICT_ALL_TYPE_ARRAY[i]//\"/\\\"}\"
 		echo -n ', '
-		echo -n \"Kernel Release\": \"${DICT_ALL_KR_ARRAY[i]//\"/\\\"}\"
+		echo -n \"KernelRelease\": \"${DICT_ALL_KR_ARRAY[i]//\"/\\\"}\"
 		echo -n ', '
-		echo -n \"Kernel Version\": \"${DICT_ALL_KV_ARRAY[i]//\"/\\\"}\"
+		echo -n \"KernelVersion\": \"${DICT_ALL_KV_ARRAY[i]//\"/\\\"}\"
 		echo -n ', '
-		echo -n \"Kernel OS Type\": \"${DICT_ALL_OST_ARRAY[i]//\"/\\\"}\"
+		echo -n \"KernelOSType\": \"${DICT_ALL_OST_ARRAY[i]//\"/\\\"}\"
 		echo -n ', '
-		echo -n \"Used DB:\": \"${DICT_ALL_DBT_ARRAY[i]//\"/\\\"}\"
+		echo -n \"UsedDB\": \"${DICT_ALL_DBT_ARRAY[i]//\"/\\\"}\"
         echo -n ', '
-		echo -n \"Unicode Status:\": \"${DICT_ALL_UNICODE_ARRAY[i]//\"/\\\"}\"
+		echo -n \"UnicodeStatus\": \"${DICT_ALL_UNICODE_ARRAY[i]//\"/\\\"}\"
 		echo -n '}'
 
 		[ $# -gt 1 ] && echo -n ', '
